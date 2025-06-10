@@ -5,5 +5,5 @@ public class PlayerDataSO : ScriptableObject
 {
     public GameObject player;
     public PlayerStatSO playerStat;
-    public WeaponSO weaponSO;
+    public PlayerWeaponSO weaponSO;
 }

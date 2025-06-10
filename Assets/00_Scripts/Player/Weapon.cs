@@ -7,11 +7,11 @@ public class Weapon : MonoBehaviour
     [SerializeField]private Transform attackPoint;
     [SerializeField]private Transform RWeaponPosition;
     [SerializeField]private Transform LWeaponPosition;
-    private int damage;
+    private int power;
     private float knockBack;
 
     private Player player;
-    private WeaponSO weaponSO;
+    private PlayerWeaponSO weaponSO;
     
     public float AttackRange { get; private set; }
     public float AttackRate { get; private set; }
@@ -23,16 +23,16 @@ public class Weapon : MonoBehaviour
     public float Dealing_End_TransitionTime { get; private set; }
     
 
-    public void Init(Player _player, WeaponSO _weaponSO)
+    public void Init(Player _player, PlayerWeaponSO _weaponSO)
     {
         player = _player;
         SetWeapon(_weaponSO);
     }
     
-    public void SetWeapon(WeaponSO _weaponSO)
+    public void SetWeapon(PlayerWeaponSO _weaponSO)
     {
         weaponSO = _weaponSO;
-        SetDamage();
+        SetPower();
         this.knockBack = weaponSO.knockBackForce;
         this.AttackRange = weaponSO.attackRange;
         this.Force = weaponSO.force;
@@ -41,16 +41,15 @@ public class Weapon : MonoBehaviour
         this.Dealing_End_TransitionTime = weaponSO.dealing_End_TransitionTime;
     }
 
-    public void SetDamage()
+    public void SetPower()
     {
-        this.damage =weaponSO.power + player.PlayerCondition.Power;
+        this.power =weaponSO.power + player.PlayerCondition.Power;
         this.AttackRate = weaponSO.attackRate + player.PlayerCondition.AttackRate;
     }
     
     public void Fire()
     {
-        Debug.Log("Fire");
-        // TODO: Projectile Init 
+        Instantiate(weaponSO.projectile,attackPoint.position,Quaternion.identity).GetComponent<Projectile>().Initialize(weaponSO, power, player.transform.forward);
     }
 
 }

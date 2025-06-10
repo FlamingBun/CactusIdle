@@ -21,3 +21,6 @@ MonoBehaviour:
   dealing_Start_TransitionTime: 0.25
   dealing_End_TransitionTime: 0.35
   attackEffect: {fileID: 0}
+  projectileSpeed: 4
+  projectile: {fileID: 8965234205743340894, guid: 21aa06cc593519c4e832eadc0c31af55,
+    type: 3}

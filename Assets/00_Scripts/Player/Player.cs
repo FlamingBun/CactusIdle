@@ -31,8 +31,6 @@ public class Player : MonoBehaviour
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
         Weapon = GetComponent<Weapon>();
-        
-        
     }
 
     public void Initialize(PlayerDataSO playerData)

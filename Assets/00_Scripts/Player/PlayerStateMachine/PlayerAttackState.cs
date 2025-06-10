@@ -60,11 +60,9 @@ public class PlayerAttackState:PlayerBaseState
     {
         if (alreadyApplyForce) return;
         alreadyApplyForce = true;
-
-        // ForceReceiver에서 많은 값을 관리하므로 이전의 값이 현재에 영향을 주지 않게 하기 위해 Reset();
+        
         stateMachine.Player.ForceReceiver.Reset();
         
-        // 공격할 때 앞으로 나아가기 때문에 Vector3.forward를 곱한다.
         stateMachine.Player.ForceReceiver.AddForce(stateMachine.Player.transform.forward * stateMachine.Player.Weapon.Force);
     }
 }

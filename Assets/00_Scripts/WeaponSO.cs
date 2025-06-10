@@ -5,7 +5,6 @@ public class WeaponSO: ScriptableObject
     public int power;
     public float attackRate;
     public float attackRange;
-
     public float knockBackForce;
 
     [Range(-10f, 10f)] public float force;
