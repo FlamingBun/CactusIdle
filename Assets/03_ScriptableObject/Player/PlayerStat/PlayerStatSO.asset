@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cddd66bd8de4846b7240dd7e8f7a3fd, type: 3}
+  m_Name: PlayerStatSO
+  m_EditorClassIdentifier: 
+  level: 1
+  HP: 100
+  MP: 100
+  exp: 0
+  power: 10
+  attackRate: 1
+  moveSpeed: 5
+  rotationDamping: 1
+  hitRecoveryTime: 0.5
