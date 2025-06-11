@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: EnemyStatSO_LV0
   m_EditorClassIdentifier: 
   HP: 30
-  exp: 5
-  gold: 10
+  exp: 20

@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
     public void ClearStage()
     {
         Logger.Log("Clear Stage");
+        StageManager.StartStage(0);
     }
 
     public void ClearAndNextStage()
@@ -100,19 +101,4 @@ public class GameManager : MonoBehaviour
     }
 
 
-
-    // private IEnumerator OpenConditionUI()
-    // {
-    //     while(!UIManager.UIDictionary.ContainsKey(UIKey.ConditionUI))
-    //     {
-    //         yield return null;
-    //     }
-    //     
-    //     UIManager.OpenUI(UIKey.ConditionUI);
-    // }
-    //
-    // public void GameOver()
-    // {
-    //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    // }
 }

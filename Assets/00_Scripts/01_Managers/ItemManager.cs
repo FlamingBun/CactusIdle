@@ -10,7 +10,8 @@ public class ItemManager : MonoBehaviour
     public List<ItemSO> Items { get { return itemDatabase.items; } }
     private Dictionary<int, ItemSO> itemDatas;
 
-    [SerializeField] private Dictionary<int, ItemSO> hasItems;
+    private Dictionary<int, ItemSO> hasItems;
+    public Dictionary<int, ItemSO> HasItems { get { return hasItems; } }
     
     public void Init()
     {

@@ -61,7 +61,7 @@ public class PlayerBaseState: IState
         }
 
         
-        stateMachine.Player.Controller.Move(((direction * stateMachine.MoveSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
+        stateMachine.Player.Controller.Move(((direction * stateMachine.Player.Condition.CurrentMoveSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
     }
     
 
@@ -72,7 +72,7 @@ public class PlayerBaseState: IState
             Transform playerTransform = stateMachine.Player.transform;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
      
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.Player.Condition.CurrentRotationDamping * Time.deltaTime);
         }
     }
     

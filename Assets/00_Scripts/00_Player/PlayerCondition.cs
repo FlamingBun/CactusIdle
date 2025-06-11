@@ -65,6 +65,9 @@ public class PlayerCondition:MonoBehaviour, IDamageable
         
         CurrentMoveSpeed = playerStat.moveSpeed;
         CurrentRotationDamping = playerStat.rotationDamping;
+
+        previousMoveSpeedMultiplier = 1f;
+        currentMoveSpeedMultiplier = 1f;
     }
 
     public void TakeDamage(float damage)
@@ -137,7 +140,6 @@ public class PlayerCondition:MonoBehaviour, IDamageable
     public void AddEXP(float _exp)
     {
         exp += _exp;
-        OnExpChange?.Invoke(playerStat.exp);
         if (exp >= 100)
         {
             int upLevel = (int)(exp / 100);
@@ -151,6 +153,7 @@ public class PlayerCondition:MonoBehaviour, IDamageable
             playerStat.rotationDamping += 0.01f * upLevel;
             RefreshStatsAfterLevelUp();
         }
+        OnExpChange?.Invoke(playerStat.exp);
     }
     
     private void RefreshStatsAfterLevelUp()
@@ -165,11 +168,10 @@ public class PlayerCondition:MonoBehaviour, IDamageable
         // 이동 속도 갱신
         CurrentMoveSpeed = playerStat.moveSpeed;
         CurrentRotationDamping = playerStat.rotationDamping;
-
+        
         // 이벤트 호출 (UI 갱신용)
         OnHPChange?.Invoke(currentHP, playerStat.HP);
         OnMPChange?.Invoke(currentMP, playerStat.MP);
-        OnMoveSpeedChange?.Invoke(CurrentMoveSpeed * currentMoveSpeedMultiplier, CurrentRotationDamping * currentMoveSpeedMultiplier);
         OnLevelChange?.Invoke(playerStat.level);
         OnPowerChange?.Invoke(playerStat.power);
         OnAttackRateChange?.Invoke(playerStat.attackRate);

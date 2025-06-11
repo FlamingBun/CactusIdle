@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,7 +20,7 @@ public class SlotButton : MonoBehaviour
 
     [HideInInspector] public int itemId;
 
-    bool isLookSlot = false;
+    bool isShopSlot = false;
 
     private ItemSO itemSO;
 
@@ -37,21 +38,21 @@ public class SlotButton : MonoBehaviour
 
     public void Initialize(ShopUI _shopUI)
     {
-        shopUI = shopUI;
+        shopUI = _shopUI;
         slotButton.onClick.AddListener(OnClickItemSlot);
-        isLookSlot = true;
+        isShopSlot = true;
     }
 
     public void Initialize(InventoryUI _inventoryUI)
     {
         inventoryUI = _inventoryUI;
         slotButton.onClick.AddListener(OnClickItemSlot);
-        isLookSlot = false;
+        isShopSlot = false;
     }
 
     private void OnClickItemSlot()
     {
-        if (isLookSlot)
+        if (isShopSlot)
             shopUI.SelectSlot(itemId);
         else
             inventoryUI.SelectSlot(itemId);
@@ -69,4 +70,5 @@ public class SlotButton : MonoBehaviour
         else
             background.color = normalColor;
     }
+    
 }

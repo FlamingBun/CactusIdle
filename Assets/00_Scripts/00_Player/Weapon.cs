@@ -22,20 +22,17 @@ public class Weapon : MonoBehaviour
     
     public float Dealing_Start_TransitionTime { get; private set; }
     public float Dealing_End_TransitionTime { get; private set; }
-    
+
+    public event Action<float, float> OnTotalPowerChanged;
 
     public void Init(Player _player, PlayerWeaponSO _weaponSO)
     {
         player = _player;
         SetWeapon(_weaponSO);
-    }
-
-    private void OnEnable()
-    {
         player.Condition.OnAttackRateChange += OnChangeStatAttackRate;
         player.Condition.OnPowerChange += OnChangeStatPower;
     }
-
+    
     public void OnChangeStatAttackRate(float value)
     {
         SetPower();
@@ -62,6 +59,7 @@ public class Weapon : MonoBehaviour
     {
         this.power =weaponSO.power + player.Condition.Power;
         this.AttackRate = weaponSO.attackRate + player.Condition.AttackRate;
+        OnTotalPowerChanged?.Invoke(power,AttackRate);
     }
     
     public void Fire()

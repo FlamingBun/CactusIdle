@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cddd66bd8de4846b7240dd7e8f7a3fd, type: 3}
   m_Name: PlayerStatSO
   m_EditorClassIdentifier: 
-  level: 1
+  level: 18
   HP: 100
   MP: 100
   exp: 0
-  power: 10
-  attackRate: 1
-  moveSpeed: 5
-  rotationDamping: 1
+  power: 27
+  attackRate: 2.6999996
+  moveSpeed: 11.7000065
+  rotationDamping: 2.17
   hitRecoveryTime: 0.5
