@@ -23,7 +23,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         }
         else
         {
-            obj = Instantiate(prefab);
+            obj = Instantiate(prefab,gameObject.transform);
             // 생성이될 때 초기화
             obj.GetComponent<IPoolable>()?.Initialize(o=>ReturnObject(prefab,o));
         }

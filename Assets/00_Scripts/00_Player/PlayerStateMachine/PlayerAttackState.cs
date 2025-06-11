@@ -9,9 +9,10 @@ public class PlayerAttackState:PlayerBaseState
     
     public override void Enter()
     {
-        stateMachine.Player.PlayerCondition.ChangeMoveSpeed(0f);
+        stateMachine.Player.Condition.ChangeMoveSpeed(0f);
         base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
+        stateMachine.Player.Animator.speed = stateMachine.Player.Weapon.AttackRate;
         alreadyApplyForce = false;
         alreadyFirstFire = false;
         alreadySecondFire = false;
@@ -19,7 +20,7 @@ public class PlayerAttackState:PlayerBaseState
 
     public override void Exit()
     {
-        stateMachine.Player.PlayerCondition.SetPreviousMoveSpeed();
+        stateMachine.Player.Condition.SetPreviousMoveSpeed();
         base.Exit();
         StopAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
     }

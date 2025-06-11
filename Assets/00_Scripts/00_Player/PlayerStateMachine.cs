@@ -17,12 +17,12 @@ public class PlayerStateMachine:StateMachine
 
     public void OnEnable()
     {
-        Player.PlayerCondition.OnSpeedChange += OnSpeedChange;
+        Player.Condition.OnMoveSpeedChange += OnMoveSpeedChange;
     }
 
     public void OnDisable()
     {
-        Player.PlayerCondition.OnSpeedChange -= OnSpeedChange;
+        Player.Condition.OnMoveSpeedChange -= OnMoveSpeedChange;
     }
 
     public PlayerStateMachine(Player _player)
@@ -35,13 +35,13 @@ public class PlayerStateMachine:StateMachine
         HitState = new PlayerHitState(this);
         SkillState = new PlayerSkillState(this);
         
-        MoveSpeed = Player.PlayerCondition.CurrentMoveSpeed;
-        RotationDamping = Player.PlayerCondition.CurrentRotationDamping;
+        MoveSpeed = Player.Condition.CurrentMoveSpeed;
+        RotationDamping = Player.Condition.CurrentRotationDamping;
         
         //Target = GameManager.Instance.EnemyManager.GetNearestEnemyFromPlayer();
     }
 
-    private void OnSpeedChange(float moveSpeed, float rotationDamping)
+    private void OnMoveSpeedChange(float moveSpeed, float rotationDamping)
     {
         MoveSpeed = moveSpeed;
         RotationDamping = rotationDamping;

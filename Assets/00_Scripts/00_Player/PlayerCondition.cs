@@ -36,7 +36,7 @@ public class PlayerCondition:MonoBehaviour, IDamageable
     #region Events
     public event Action<float, float> OnHPChange;
     public event Action<float, float> OnMPChange;
-    public event Action<float, float> OnSpeedChange;
+    public event Action<float,float> OnMoveSpeedChange;
     public event Action<float> OnLevelChange;
     public event Action<float> OnExpChange;
     public event Action<float> OnPowerChange;
@@ -128,7 +128,7 @@ public class PlayerCondition:MonoBehaviour, IDamageable
     {
         previousMoveSpeedMultiplier = currentMoveSpeedMultiplier;
         currentMoveSpeedMultiplier = multiplier;
-        OnSpeedChange?.Invoke(CurrentMoveSpeed*currentMoveSpeedMultiplier, CurrentRotationDamping*currentMoveSpeedMultiplier);
+        OnMoveSpeedChange?.Invoke(CurrentMoveSpeed*currentMoveSpeedMultiplier, CurrentRotationDamping*currentMoveSpeedMultiplier);
     }
     // ==== end MoveSpeed ====
 }

@@ -43,8 +43,8 @@ public class Weapon : MonoBehaviour
 
     public void SetPower()
     {
-        this.power =weaponSO.power + player.PlayerCondition.Power;
-        this.AttackRate = weaponSO.attackRate + player.PlayerCondition.AttackRate;
+        this.power =weaponSO.power + player.Condition.Power;
+        this.AttackRate = weaponSO.attackRate + player.Condition.AttackRate;
     }
     
     public void Fire()

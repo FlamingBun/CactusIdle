@@ -16,8 +16,9 @@ public class GameManager : MonoBehaviour
                 instance.AddComponent<DataManager>();
                 instance.AddComponent<EnemyManager>();
                 instance.AddComponent<StageManager>();
-                // instance.AddComponent<UIManager>();
-                // instance.AddComponent<Inventory>();
+                instance.AddComponent<UIManager>();
+                instance.AddComponent<ItemManager>();
+                
                 if (instance is GameManager gameManager)
                 {
                     gameManager.AwakeInitialize();
@@ -34,8 +35,8 @@ public class GameManager : MonoBehaviour
     public StageManager StageManager { get; private set; }
 
     public CinemachineVirtualCamera virtualCamera;
-    // public UIManager UIManager { get { return uiManager; } }
-    // public Inventory Inventory { get { return inventory; } }
+    public UIManager UIManager { get; private set; }
+    public ItemManager ItemManager { get; private set; }
     
 
     private void Awake()
@@ -55,15 +56,14 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         DataManager = GetComponent<DataManager>();
-        EnemyManager = GetComponent<EnemyManager>();
         StageManager = GetComponent<StageManager>();
+        EnemyManager = GetComponent<EnemyManager>();
+        UIManager = GetComponent<UIManager>();
+        ItemManager = GetComponent<ItemManager>();
         
         DataManager.Init();
         
-        // uiManager = GetComponent<UIManager>();
-        // characterManager = GetComponent<CharacterManager>();
-        // inventory = GetComponent<Inventory>();
-        // characterManager.Player = Instantiate(player).GetComponent<Player>();
+        ItemManager.Init();
     }
 
     private void Start()
@@ -76,7 +76,6 @@ public class GameManager : MonoBehaviour
     {
         StageManager.Init();
         EnemyManager.Init();
-        //StartCoroutine(OpenConditionUI());
     }
 
     private void StartGame()

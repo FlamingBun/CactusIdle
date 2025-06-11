@@ -10,7 +10,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Transform CameraPoint;
-    public PlayerCondition PlayerCondition { get; private set; }
+    public PlayerCondition Condition { get; private set; }
     
     #region Animation
     public PlayerAnimationData AnimationData { get; private set; }
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         AnimationData = new PlayerAnimationData();
-        PlayerCondition =GetComponent<PlayerCondition>();
+        Condition =GetComponent<PlayerCondition>();
         Animator = GetComponentInChildren<Animator>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     {
         AnimationData.Initialize();
         
-        PlayerCondition.Init(playerData.playerStat);
+        Condition.Init(playerData.playerStat);
         Weapon.Init(this,playerData.weaponSO);
         
         stateMachine = new PlayerStateMachine(this);
@@ -47,5 +47,15 @@ public class Player : MonoBehaviour
     private void Update()
     {
         stateMachine.Update();
+    }
+
+    public void EquipItem(PlayerWeaponSO weaponSO)
+    {
+        Weapon.SetWeapon(weaponSO);
+    }
+
+    public void UseItem(ConsumableItemSO consumableItemSO)
+    {
+        Logger.Log($"consumableItemSO {consumableItemSO.name}");
     }
 }

@@ -5,7 +5,7 @@ public class PlayerSkillState:PlayerBaseState
     }
     public override void Enter()
     {
-        stateMachine.Player.PlayerCondition.ChangeMoveSpeed(0f);
+        stateMachine.Player.Condition.ChangeMoveSpeed(0f);
         base.Enter();
     }
 
