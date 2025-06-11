@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0b472a72cf42cfab2279c69e92acf2, type: 3}
+  m_Name: EnemyDatabaseSO
+  m_EditorClassIdentifier: 
+  stageEnemies:
+  - spawnCount: 20
+    enemyDataSO: {fileID: 11400000, guid: c1af96f84f698f84a82ed1af1e258fc2, type: 2}
+    bossDataSO: {fileID: 0}
