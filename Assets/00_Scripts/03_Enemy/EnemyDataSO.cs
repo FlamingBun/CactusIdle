@@ -6,4 +6,5 @@ public class EnemyDataSO : ScriptableObject
 {
     public GameObject prefab;
     public EnemyStatSO enemyStatSO;
+    public int gold;
 }

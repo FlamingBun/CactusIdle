@@ -29,6 +29,7 @@ public class Enemy:MonoBehaviour
 
     public void OnDieEvent()
     {
+        GameManager.Instance.DataManager.EarnGold(enemyDataSO.gold);
         GameManager.Instance.EnemyManager.DieEnemy();
         ObjectPoolManager.Instance.ReturnObject(enemyDataSO.prefab, this.gameObject);
     }

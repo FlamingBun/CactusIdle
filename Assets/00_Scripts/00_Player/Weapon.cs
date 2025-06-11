@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class Weapon : MonoBehaviour
     [SerializeField]private Transform attackPoint;
     [SerializeField]private Transform RWeaponPosition;
     [SerializeField]private Transform LWeaponPosition;
-    private int power;
+    public int power;
     private float knockBack;
 
     private Player player;
@@ -28,7 +29,23 @@ public class Weapon : MonoBehaviour
         player = _player;
         SetWeapon(_weaponSO);
     }
-    
+
+    private void OnEnable()
+    {
+        player.Condition.OnAttackRateChange += OnChangeStatAttackRate;
+        player.Condition.OnPowerChange += OnChangeStatPower;
+    }
+
+    public void OnChangeStatAttackRate(float value)
+    {
+        SetPower();
+    }
+
+    public void OnChangeStatPower(float value)
+    {
+        SetPower();
+    }
+
     public void SetWeapon(PlayerWeaponSO _weaponSO)
     {
         weaponSO = _weaponSO;

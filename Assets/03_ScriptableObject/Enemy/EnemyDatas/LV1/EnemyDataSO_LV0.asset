@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3202229509368798618, guid: a906ea73ec91b6f4b967bb6bb4e646f7, type: 3}
   enemyStatSO: {fileID: 11400000, guid: cf95cfaaa5e55d740b046ab37ecad1a1, type: 2}
+  gold: 10

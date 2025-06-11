@@ -44,8 +44,8 @@ public class EnemyCondition:MonoBehaviour,IDamageable
         if (currentHP <= 0)
         { 
             IsDead = true;
+            GameManager.Instance.Player.Condition.AddEXP(exp);
             OnDieEvent?.Invoke();
-            // TODO: Player Exp 증가
             return;
         }
         
