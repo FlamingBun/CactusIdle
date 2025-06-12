@@ -8,7 +8,7 @@ public class StageManager : MonoBehaviour
     public int PreviousStageLevel { get; private set; } = 0;
     public int CurrentStageLevel { get; private set; } = 0;
 
-    public bool IsBoss { get; set; } = false;
+    public bool IsBoss { get; set; } = true;
 
     public void Init()
     {

@@ -41,6 +41,7 @@ public class EnemyCondition:MonoBehaviour,IDamageable
         
         currentHP -= damage;
         OnHPChange?.Invoke(currentHP, enemyStatSO.HP);
+        
         if (currentHP <= 0)
         { 
             IsDead = true;

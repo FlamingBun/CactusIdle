@@ -91,13 +91,12 @@ public class GameManager : MonoBehaviour
 
     public void ClearStage()
     {
-        Logger.Log("Clear Stage");
-        StageManager.StartStage(0);
+        StageManager.StartStage(StageManager.CurrentStageLevel);
     }
 
     public void ClearAndNextStage()
     {
-        Logger.Log("Clear And Next Stage");
+        StageManager.StartStage(StageManager.CurrentStageLevel+1);
     }
 
 

@@ -1,4 +1,4 @@
-
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,11 +12,12 @@ public class EnemyManager : MonoBehaviour
 
     private StageDataSO currentStageData;
     private int currentStageLevel;
+    private int totalEnemyCount;
     private int currentEnemyCount;
     private bool isBoss = false;
 
     private List<Enemy> spawnedEnemies = new();
-    
+    public event Action<int, int> OnEnemyCountChange;
     public void Init()
     {
         player = GameManager.Instance.Player;
@@ -44,6 +45,9 @@ public class EnemyManager : MonoBehaviour
         
         isBoss = _isBoss;
         if (isBoss) ++currentEnemyCount;
+
+        totalEnemyCount = currentEnemyCount;
+        OnEnemyCountChange?.Invoke(currentEnemyCount, totalEnemyCount);
     }
 
     public Enemy GetNearestEnemyFromPlayer()
@@ -75,11 +79,12 @@ public class EnemyManager : MonoBehaviour
     public void DieEnemy()
     {
         --currentEnemyCount;
+        OnEnemyCountChange?.Invoke(currentEnemyCount, totalEnemyCount);
         if (isBoss)
         {
             if (currentEnemyCount == 1)
             {
-                enemySpawner.SpawnEnemy(enemyDatabaseSO.stageEnemies[currentStageLevel - 1].bossDataSO, currentStageData.minBound, currentStageData.maxBound);
+                spawnedEnemies.Add(enemySpawner.SpawnEnemy(enemyDatabaseSO.stageEnemies[currentStageLevel].bossDataSO, currentStageData.minBound, currentStageData.maxBound));
             }
 
             if (currentEnemyCount <= 0)

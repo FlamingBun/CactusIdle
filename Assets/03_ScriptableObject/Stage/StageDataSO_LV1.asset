@@ -9,15 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cddd66bd8de4846b7240dd7e8f7a3fd, type: 3}
-  m_Name: PlayerStatSO
+  m_Script: {fileID: 11500000, guid: 3c907d036d914a9a9c356df7671935d5, type: 3}
+  m_Name: StageDataSO_LV1
   m_EditorClassIdentifier: 
-  level: 1
-  HP: 100
-  MP: 100
-  exp: 0
-  power: 10
-  attackRate: 2
-  moveSpeed: 10
-  rotationDamping: 3
-  hitRecoveryTime: 0.5
+  stageLevel: 1
+  minBound: {x: -60, y: 0, z: -60}
+  maxBound: {x: 60, y: 0, z: 60}

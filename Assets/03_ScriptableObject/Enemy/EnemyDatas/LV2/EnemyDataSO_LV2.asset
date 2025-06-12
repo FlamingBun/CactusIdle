@@ -9,15 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cddd66bd8de4846b7240dd7e8f7a3fd, type: 3}
-  m_Name: PlayerStatSO
+  m_Script: {fileID: 11500000, guid: fb400ccbb6854e3d8d60f28996a4bf9b, type: 3}
+  m_Name: EnemyDataSO_LV2
   m_EditorClassIdentifier: 
-  level: 1
-  HP: 100
-  MP: 100
-  exp: 0
-  power: 10
-  attackRate: 2
-  moveSpeed: 10
-  rotationDamping: 3
-  hitRecoveryTime: 0.5
+  prefab: {fileID: 3202229509368798618, guid: f6b88d7e8d2239c4db2fbe44de1e1446, type: 3}
+  enemyStatSO: {fileID: 11400000, guid: a39a4d4a1a0a2d74abce7fc3531ea5c8, type: 2}
+  gold: 20

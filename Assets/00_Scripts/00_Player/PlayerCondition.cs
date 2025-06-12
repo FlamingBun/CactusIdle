@@ -149,7 +149,7 @@ public class PlayerCondition:MonoBehaviour, IDamageable
             playerStat.exp = exp;
             playerStat.power += 1 * upLevel;
             playerStat.attackRate += 0.1f * upLevel;
-            playerStat.moveSpeed += 0.1f * upLevel;
+            playerStat.moveSpeed += 1f * upLevel;
             playerStat.rotationDamping += 0.01f * upLevel;
             RefreshStatsAfterLevelUp();
         }

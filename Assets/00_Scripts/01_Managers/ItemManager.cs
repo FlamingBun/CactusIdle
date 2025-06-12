@@ -11,7 +11,7 @@ public class ItemManager : MonoBehaviour
     private Dictionary<int, ItemSO> itemDatas;
 
     private Dictionary<int, ItemSO> hasItems;
-    public Dictionary<int, ItemSO> HasItems { get { return hasItems; } }
+    public List<ItemSO> hasItemList;
     
     public void Init()
     {
@@ -28,6 +28,11 @@ public class ItemManager : MonoBehaviour
         }
         
         hasItems = dataManager.LoadHasItems();
+        foreach (var item in hasItems)
+        {
+            hasItemList.Add(item.Value);   
+        }
+        
     }
 
     public bool HasItem(int itemId)
@@ -49,6 +54,7 @@ public class ItemManager : MonoBehaviour
         ItemSO item = itemDatas[itemId];
 
         hasItems.Add(item.itemId, item);
+        hasItemList.Add(item);
         dataManager.SpendGold(item.price);
         dataManager.SaveHasItems(hasItems);
     }
@@ -61,5 +67,6 @@ public class ItemManager : MonoBehaviour
     public void UseItem(ConsumableItemSO consumableItemSO)
     {
         hasItems.Remove(consumableItemSO.itemId);
+        hasItemList.Remove(consumableItemSO);
     }
 }

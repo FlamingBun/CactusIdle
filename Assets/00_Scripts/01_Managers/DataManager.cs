@@ -45,6 +45,7 @@ public class DataManager : MonoBehaviour
         StageDatabaseSO = Resources.Load<StageDatabaseSO>("StageDatabaseSO");
         ItemDatabaseSO = Resources.Load<ItemDatabaseSO>("ItemDatabaseSO");
         GetGold();
+        // PlayerPrefs.DeleteAll();
     }
     
     
@@ -98,9 +99,9 @@ public class DataManager : MonoBehaviour
     public Dictionary<int, ItemSO> LoadHasItems()
     {
         Dictionary<int, ItemSO> hasItems = new Dictionary<int, ItemSO>();
-
+        
         string json = PlayerPrefs.GetString(HasItemKey);
-
+        
         if (!string.IsNullOrEmpty(json))
         {
             ItemDataWrapper wrapper = JsonUtility.FromJson<ItemDataWrapper>(json);

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +16,11 @@ public class InventoryUI : BaseUI
     [SerializeField] private Button useButton;
     [SerializeField] private Transform content;
     [SerializeField] GameObject slotPrefab;
-
     
-    private Dictionary<int,ItemSO> hasItems;
-    private List<SlotButton> slotList;
+    private List<ItemSO> hasItems;
+    private List<SlotButton> slotList = new();
+    
+    WaitForSeconds ws = new WaitForSeconds(0.2f);
 
     private int selectedItemId;
 
@@ -26,30 +29,29 @@ public class InventoryUI : BaseUI
         base.Initialize();
         itemManager =GameManager.Instance.ItemManager;
         exitButton.onClick.AddListener(()=>GameManager.Instance.UIManager.CloseUI());
-
-        slotList = new List<SlotButton>();
-
-        
-        hasItems = itemManager.HasItems;
-        MakeSlot();
+            
+        hasItems = itemManager.hasItemList;
     }
+
 
     private void OnEnable()
     {
         if (itemManager == null) return;
-        MakeSlot();
+        SetSlot();
         SelectSlot(1);
     }
 
     private void OnDisable()
     {
-        foreach (SlotButton slot in slotList)
+        if(ObjectPoolManager.Instance == null) return;
+        
+        foreach (var slot in slotList)
         {
             ObjectPoolManager.Instance.ReturnObject(slotPrefab,slot.gameObject);
         }
     }
 
-    private void MakeSlot()
+    private void SetSlot()
     {
         foreach (var item in hasItems)
         {
@@ -57,7 +59,7 @@ public class InventoryUI : BaseUI
             slot.transform.SetParent(content, false);
                 
             SlotButton slotButton = slot.GetComponent<SlotButton>();
-            slotButton.SetItemInfo(item.Value);
+            slotButton.SetItemInfo(item);
             slotButton.Initialize(this);
                 
             slotList.Add(slotButton);

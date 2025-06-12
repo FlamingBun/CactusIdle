@@ -15,4 +15,10 @@ MonoBehaviour:
   stageEnemies:
   - spawnCount: 20
     enemyDataSO: {fileID: 11400000, guid: c1af96f84f698f84a82ed1af1e258fc2, type: 2}
-    bossDataSO: {fileID: 0}
+    bossDataSO: {fileID: 11400000, guid: 61dbed61673387044b6b840e4875cd3b, type: 2}
+  - spawnCount: 20
+    enemyDataSO: {fileID: 11400000, guid: eeb7da523fe970e4fa99ecee4b8bb02b, type: 2}
+    bossDataSO: {fileID: 11400000, guid: 7609ba1f93479fe40856956d50d341e8, type: 2}
+  - spawnCount: 20
+    enemyDataSO: {fileID: 11400000, guid: 62e6b37b4d42cc143bb7abedc1970f16, type: 2}
+    bossDataSO: {fileID: 11400000, guid: f34b34ace19fde6499515706062a9539, type: 2}
