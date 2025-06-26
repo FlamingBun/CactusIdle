@@ -17,6 +17,7 @@ public class InventoryUI : BaseUI
     [SerializeField] private Transform content;
     [SerializeField] GameObject slotPrefab;
     
+    private List<ItemSO> items;
     private List<ItemSO> hasItems;
     private List<SlotButton> slotList = new();
     
@@ -29,41 +30,41 @@ public class InventoryUI : BaseUI
         base.Initialize();
         itemManager =GameManager.Instance.ItemManager;
         exitButton.onClick.AddListener(()=>GameManager.Instance.UIManager.CloseUI());
-            
-        hasItems = itemManager.hasItemList;
+        
+        items = itemManager.Items;
+        MakeSlot();
     }
 
 
     private void OnEnable()
     {
         if (itemManager == null) return;
-        SetSlot();
+        SetSlotActive();
         SelectSlot(1);
     }
 
-    private void OnDisable()
+    
+    private void MakeSlot()
     {
-        if(ObjectPoolManager.Instance == null) return;
-        
-        foreach (var slot in slotList)
+        foreach (var item in items)
         {
-            ObjectPoolManager.Instance.ReturnObject(slotPrefab,slot.gameObject);
+            if (item.itemType == ItemType.Weapon)
+            {
+                GameObject slot = Instantiate(slotPrefab, content);
+                SlotButton slotButton = slot.GetComponent<SlotButton>();
+                slotButton.SetItemInfo(item);
+                slotButton.Initialize(this);
+                slotList.Add(slotButton);
+                slot.SetActive(false);
+            }
         }
     }
 
-    private void SetSlot()
+    private void SetSlotActive()
     {
-        foreach (var item in hasItems)
+        foreach (var slot in slotList)
         {
-            GameObject slot = ObjectPoolManager.Instance.GetObject(slotPrefab, Vector3.zero, Quaternion.identity);
-            slot.transform.SetParent(content, false);
-                
-            SlotButton slotButton = slot.GetComponent<SlotButton>();
-            slotButton.SetItemInfo(item);
-            slotButton.Initialize(this);
-                
-            slotList.Add(slotButton);
-            slot.SetActive(true);
+            slot.gameObject.SetActive(itemManager.HasItem(slot.itemId));
         }
     }
 

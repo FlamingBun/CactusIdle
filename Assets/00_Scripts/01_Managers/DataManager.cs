@@ -32,8 +32,6 @@ public class DataManager : MonoBehaviour
     
     #region Items
     private const string HasItemKey = "HasItems";
-    private const string LookItemKey = "LookItem";
-    private const string RideItemKey = "RideItem";
     #endregion Items
 
 
@@ -45,7 +43,7 @@ public class DataManager : MonoBehaviour
         StageDatabaseSO = Resources.Load<StageDatabaseSO>("StageDatabaseSO");
         ItemDatabaseSO = Resources.Load<ItemDatabaseSO>("ItemDatabaseSO");
         GetGold();
-        // PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
     }
     
     
@@ -111,18 +109,8 @@ public class DataManager : MonoBehaviour
                 hasItems[pair.key] = pair.itemSO;
             }
         }
-        else
-        {
-            GameManager.Instance.ItemManager.AddItem(1);
-        }
 
         return hasItems;
-    }
-
-    public void SavePlayerData(int lookId, int rideId)
-    {
-        PlayerPrefs.SetInt(LookItemKey, lookId);
-        PlayerPrefs.SetInt(RideItemKey, rideId);
     }
 
 }

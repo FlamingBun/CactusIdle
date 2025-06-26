@@ -17,7 +17,7 @@ MonoBehaviour:
   MP: 100
   exp: 0
   power: 10
-  attackRate: 2
+  attackRate: 3
   moveSpeed: 10
   rotationDamping: 3
   hitRecoveryTime: 0.5

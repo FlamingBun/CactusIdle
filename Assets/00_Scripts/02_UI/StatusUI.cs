@@ -42,6 +42,7 @@ public class StatusUI : MonoBehaviour
         player.Condition.OnLevelChange += LevelChange;
         player.Condition.OnExpChange += ExpChange;
         player.Weapon.OnTotalPowerChanged += TotalPowerChanged;
+        GameManager.Instance.StageManager.OnChageStage += StageChange;
         dataManager.OnGoldChange += GoldChange;
         player.Condition.OnMoveSpeedChange += ChangeMoveSpeed;
     }
@@ -52,6 +53,11 @@ public class StatusUI : MonoBehaviour
         
         dataManager.OnGoldChange -= GoldChange;
         player.Condition.OnMoveSpeedChange -= ChangeMoveSpeed;
+    }
+
+    private void StageChange(int stage)
+    {
+        stageText.text = $"스테이지 : {stage+1}";
     }
 
     private void TotalPowerChanged(float power, float attackRate)

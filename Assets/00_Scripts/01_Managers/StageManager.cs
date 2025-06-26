@@ -1,4 +1,4 @@
-
+using System;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
@@ -7,8 +7,10 @@ public class StageManager : MonoBehaviour
     
     public int PreviousStageLevel { get; private set; } = 0;
     public int CurrentStageLevel { get; private set; } = 0;
-
+    
     public bool IsBoss { get; set; } = true;
+    
+    public event Action<int> OnChageStage;
 
     public void Init()
     {
@@ -19,6 +21,7 @@ public class StageManager : MonoBehaviour
     {
         PreviousStageLevel = CurrentStageLevel;
         CurrentStageLevel = stageLevel;
+        OnChageStage?.Invoke(CurrentStageLevel);
         GameManager.Instance.EnemyManager.SpawnEnemy(dataManager.GetStageInfo(stageLevel), IsBoss);
     }
 }

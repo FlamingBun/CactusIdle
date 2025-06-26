@@ -28,6 +28,11 @@ public class ItemManager : MonoBehaviour
         }
         
         hasItems = dataManager.LoadHasItems();
+        if (hasItems.Count == 0)
+        {
+            AddItem(1);
+        }
+
         foreach (var item in hasItems)
         {
             hasItemList.Add(item.Value);   
@@ -52,10 +57,16 @@ public class ItemManager : MonoBehaviour
         }
 
         ItemSO item = itemDatas[itemId];
+        
+        if (!dataManager.SpendGold(item.price)&& itemId != 1)
+        {
+            Logger.Log("골드가 부족합니다.");
+            return;
+        }
 
         hasItems.Add(item.itemId, item);
         hasItemList.Add(item);
-        dataManager.SpendGold(item.price);
+        
         dataManager.SaveHasItems(hasItems);
     }
 
